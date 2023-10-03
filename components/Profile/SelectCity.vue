@@ -1,7 +1,7 @@
 <template>
     <div>
         <label for="city">Город:</label>
-        <select v-model="city">
+        <select v-model="profile.city">
           <option v-for="cityItem in cityArray" >{{ cityItem }}</option>
         </select>
     </div>
@@ -9,8 +9,10 @@
 
 <script setup>
 import { useProfileStore } from '~/stores/profile'
-const profileStore = useProfileStore()
-const city = profileStore.profile.city
+import { storeToRefs } from 'pinia'; 
+
+
+const { profile } = storeToRefs(useProfileStore()); 
 const cityArray = ref( ['Minsk','Mosckow','Kiev','ST.Pt','Toronto'] )
 
 </script>
